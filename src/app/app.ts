@@ -17,9 +17,17 @@ export class App implements OnInit, AfterViewInit {
   ) {}
 
   async ngOnInit() {
+    let id: any
+    if (sessionStorage.getItem('sessionId')) {
+      id = sessionStorage.getItem('sessionId')
+    } else {
+      id = crypto.randomUUID()
+      sessionStorage.setItem('sessionId', id)
+    }
+
     const { sessionId } = await this.nextClientService.useNextClient({
       clientInfo: { name: 'my-project', version: '1.0.0' },
-      proxyOptions: { url: 'https://agent.icjs.ink/sse', token: '' }
+      proxyOptions: { url: 'https://agent.icjs.ink/sse', token: '', sessionId: id }
     })
 
     this.sessionId.set(sessionId)
