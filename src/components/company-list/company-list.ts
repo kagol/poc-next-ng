@@ -7,7 +7,8 @@ import { NextServerService } from '@opentiny/next-ng';
 @Component({
   selector: 'company-list',
   imports: [CommonModule, FormsModule],
-  templateUrl: './company-list.html'
+  templateUrl: './company-list.html',
+  styleUrl: './company-list.scss'
 })
 export class CompanyList implements OnInit, AfterViewInit {
   protected companyList = signal([
