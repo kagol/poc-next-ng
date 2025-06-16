@@ -1,16 +1,16 @@
-import { AfterViewInit, Component, OnInit, signal } from '@angular/core';
+import { AfterViewInit, Component, OnInit, signal, VERSION } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MyPage } from '../components/my-page/my-page'
 import { NextClientService } from '@opentiny/next-ng';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MyPage],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App implements OnInit, AfterViewInit {
   protected title = 'ng-demo-next';
-  protected sessionId = signal('')
+  protected sessionId = signal('');
+  protected version = VERSION.full;
 
   constructor(
     private nextClientService: NextClientService,
